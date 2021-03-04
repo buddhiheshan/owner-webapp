@@ -1,0 +1,24 @@
+export const SET_USER = 'SET_USER';
+export const RESET_USER = 'RESET_USER';
+
+export const SET_PROPERTY = 'SET_PROPERTY';
+
+export const SET_ITEMS = 'SET_ITEMS';
+export const SET_SELECTED_ITEM = 'SET_SELECTED_ITEM';
+export const ADD_ITEM ='ADD_ITEM';
+export const DELETE_ITEM = 'DELETE_ITEM';
+
+export const SET_ROBOTS = 'SET_ROBOTS';
+export const PUSH_ROBOTINFO = 'PUSH_ROBOTINFO';
+
+export const SET_PENDING_ORDERS = 'SET_PENDING_ORDERS';
+export const SET_PREPARING_ORDERS = 'SET_PREPARING_ORDERS';
+export const SET_DELIVERED_ORDERS = 'SET_DELIVERED_ORDERS';
+export const SET_DELIVERING_ORDERS = 'SET_DELIVERING_ORDERS';
+export const SET_CANCELLED_ORDERS = 'SET_CANCELLED_ORDERS';
+export const PUSH_ORDER = 'PUSH_ORDER';
+
+export const SET_REVIEWS = 'SET_REVIEWS';
+export const RESET_REVIEWS = 'RESET_REVIEWS';
+
+export const GET_TABLES = 'GET_TABLES';
