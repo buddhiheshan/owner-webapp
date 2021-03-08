@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Container } from 'react-bootstrap'
 import { connect } from 'react-redux';
 
 import { login } from '../redux/actions/userActions';
@@ -27,18 +27,20 @@ class Login extends Component {
 
     render() {
         return (
-            <Form className="Login" onSubmit={this.handleSubmit}>
-                <Form.Group controlId="mobile">
-                    <Form.Label>Mobile number</Form.Label>
-                    <Form.Control type="number" name="mobile" placeholder="Enter mobile number" value={this.state.mobile} onChange={this.handleChange} />
-                </Form.Group>
+            <Container className="LoginBackgrond">
+                <Form className="Login" onSubmit={this.handleSubmit}>
+                    <Form.Group controlId="mobile">
+                        <Form.Label>Mobile number</Form.Label>
+                        <Form.Control type="number" name="mobile" placeholder="Enter mobile number" value={this.state.mobile} onChange={this.handleChange} />
+                    </Form.Group>
 
-                <Form.Group controlId="password">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password"  name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange}/>
-                </Form.Group>
-                <Button variant="primary" type="submit">Login</Button>
-            </Form>
+                    <Form.Group controlId="password">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
+                    </Form.Group>
+                    <Button variant="primary" type="submit">Login</Button>
+                </Form>
+            </Container>
         )
     }
 }
