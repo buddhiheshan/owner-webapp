@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { Row, Col, Container, ListGroup } from 'react-bootstrap';
+import { Row, Col, ListGroup } from 'react-bootstrap';
 import { MdStar } from 'react-icons/md'
 
 import Loading from './LoadingComponent';
@@ -14,13 +14,39 @@ const RenderStars = ({ count }) => {
     const stars = [];
 
     for (let i = 0; i < count; i++) {
-        stars.push(<MdStar key={i} color="red" />)
+        stars.push(<MdStar key={i} color="yellow" />)
     }
     return (
         <div>
             {stars}
         </div>
     )
+}
+
+const RenderReviews = ({ reviews }) => {
+    console.log(reviews);
+    if (reviews.length !== 0) {
+        return (
+            <ListGroup>
+                {
+                    reviews.map((review) => {
+                        return (
+                            <ListGroup.Item key={review._id}>
+                                {review.comment}<br />
+                                <RenderStars count={review.stars} />
+                            </ListGroup.Item>
+                        );
+                    })
+                }
+            </ListGroup>
+        )
+    }
+    else{
+        return(
+            <Col>No reviews.</Col>
+        )
+    }
+
 }
 
 
@@ -33,30 +59,19 @@ class Reviews extends Component {
 
     render() {
 
-        const reviews = this.props.reviews.reviews.map((review) => (
-            <ListGroup.Item key={review._id} className="Review">
-                {review.comment}<br />
-                <RenderStars count={review.stars} />
-            </ListGroup.Item>
-        ))
-
         return (
             <React.Fragment>
-                <Container>
-                    <Row>
-                        <Col>Reviews</Col>
-                    </Row>
-                    <Row >
-                        <Col>
-                            {
-                                this.props.reviews.isLoading ? <Loading /> :
-                                    <ListGroup>
-                                        {reviews}
-                                    </ListGroup>
+
+                <Row className="Reviews">
+                    <Col>
+                        <Row className="ReviewsHeader">Reviews</Row>
+                        <Row>
+                            {this.props.reviews.isLoading ? <Loading /> :
+                                <RenderReviews reviews={this.props.reviews.reviews} />
                             }
-                        </Col>
-                    </Row>
-                </Container>
+                        </Row>
+                    </Col>
+                </Row>
             </React.Fragment>
         )
     }

@@ -34,7 +34,7 @@ class Layout extends Component {
                 <Container fluid className="Layout">
                     <Navbar />
                     <Row className="m-0">
-                        <Col sm={8} className="container-fluid MainPanel">
+                        <Col sm={8} className="container-fluid Main-panel">
                             <Switch>
                                 <Route exact path="/menu"><Menu /></Route>
                                 <Route exact path="/operators"><Operators /></Route>

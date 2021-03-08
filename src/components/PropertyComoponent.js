@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Jumbotron, Image, Container, Row, Col, Button, Modal } from 'react-bootstrap';
+import { Jumbotron, Image, Container, Row, Col, Button, Modal, ListGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import EditImageForm from './EditImageFormComponent';
@@ -8,8 +8,9 @@ import EditPropertyForm from './EditPropertyFormComponent';
 function RenderDetails({ property }) {
     const RequiredDetails = {
         "Name": property.name,
-        "Description": property.description,
-        "Address": property.address
+        "Address": property.address,
+        "Description": property.description
+        
 
     }
 
@@ -17,14 +18,18 @@ function RenderDetails({ property }) {
         <div className="col-12 col-md-6 Details">
             {
                 Object.keys(RequiredDetails).map((key, i) => (
-                    <div className="row" key={i}>
-                        <div className="col-3">
-                            {key}
-                        </div>
-                        <div className="col-9">
-                            {RequiredDetails[key]}
-                        </div>
-                    </div>
+                    <ListGroup.Item key={i}>
+                        <Row>
+                            <Col md={4}>
+                                {key}
+                            </Col>
+                            <Col md={8}>
+                                <p>
+                                {RequiredDetails[key]}
+                                </p>
+                            </Col>
+                        </Row>
+                    </ListGroup.Item>
                 ))
             }
         </div>
@@ -66,7 +71,7 @@ class Property extends Component {
                         <Modal.Title>Edit Property Image</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <EditImageForm imgURL={this.props.property.imgURL} toggleModal={this.toggleEditImageModal}/>
+                        <EditImageForm imgURL={this.props.property.imgURL} toggleModal={this.toggleEditImageModal} />
                     </Modal.Body>
                 </Modal>
 
@@ -79,20 +84,18 @@ class Property extends Component {
                     </Modal.Body>
                 </Modal>
 
-                <Jumbotron>
-                    <Container>
-                        <Row>
-                            <Col>
-                                {this.props.property.name}
-                            </Col>
-                            <Button className="mr-3" onClick={this.toggleEditImageModal}>Edit Image</Button>
-                            <Button onClick={this.toggleEditPropertyModal}>Edit Property</Button>
-                        </Row>
-                    </Container>
+                <Jumbotron className="Jumbotron-MainPanel">
+                    <Row>
+                        <Col>
+                            {this.props.property.name}
+                        </Col>
+                        <Button size="lg" className="mr-3" onClick={this.toggleEditImageModal}>Edit Image</Button>
+                        <Button size="lg" onClick={this.toggleEditPropertyModal}>Edit Property</Button>
+                    </Row>
                 </Jumbotron>
 
                 <Container>
-                    <Row className="mt-5">
+                    <Row className="ItemDetails">
                         <Col md={6}>
                             <Image src={this.props.property.imgURL} fluid rounded />
                         </Col>

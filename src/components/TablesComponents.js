@@ -6,14 +6,12 @@ class Tables extends Component {
         return (
             <React.Fragment>
 
-                <Jumbotron>
-                    <Container>
-                        <Row>
-                            <Col>
-                                Tables
+                <Jumbotron className="Jumbotron-MainPanel">
+                    <Row>
+                        <Col>
+                            Tables
                             </Col>
-                        </Row>
-                    </Container>
+                    </Row>
                 </Jumbotron>
 
             </React.Fragment>

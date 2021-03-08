@@ -5,7 +5,7 @@ import { getOrders } from '../redux/actions/ordersAction';
 import { getItems } from '../redux/actions/itemActions';
 
 import Loading from '../components/LoadingComponent';
-import OrdersTab from '../components/OrdersTabComponent';
+import OrdersTab from './OrdersTabComponent';
 
 import { Jumbotron, Container } from 'react-bootstrap';
 

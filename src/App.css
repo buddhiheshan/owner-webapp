@@ -6,6 +6,25 @@ body {
   font-family: 'Ubuntu', sans-serif;
 }
 
+.row{
+  margin:0;
+}
+
+.active {
+  font-weight: bold;
+}
+
+a {
+  color: white;
+}
+
+.list-group-item{
+  background-color: unset;
+  border: unset;
+}
+
+/* Login Styling */
+
 .Login {
   position: absolute;
   top: 50%;
@@ -20,11 +39,9 @@ body {
 }
 
 .Layout {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("images/background.png");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/background.png");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
-  margin: 0;
   padding: 0;
 }
 
@@ -32,25 +49,78 @@ body {
   height: 6vh;
 }
 
-.MainPanel {
+.NavbarBrand{
+  color: black;
+}
+
+/* Main Panel Styling */
+
+.Main-panel {
   height: 94vh;
   padding: 0;
   border-right: 3px solid;
   overflow-y: scroll;
 }
 
-.Robots {
-  height: 47vh;
-  overflow-y: scroll;
-  padding: 0;
-  border-bottom: 3px solid;
+.Jumbotron-MainPanel{
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding-left: 30px;
+  font-size: 3em;
 }
 
-.Orders {
+/* Robot Panel Styling */
+
+.Robot-panel {
   height: 47vh;
   overflow-y: scroll;
   padding: 0;
+  border-bottom: 1px solid;
+  text-align: center;
 }
+
+.Jumbotron-RobotPanel {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  font-size: 2em;
+  padding: 10px 0px 10px 0px;
+  margin: 0px;
+}
+
+.Robot-media{
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid;
+  padding: 5px 10px 5px 10px;
+}
+
+.RobotDetail {
+  padding: 5px 20px;
+}
+
+/* Orders Panel Styling and All Orders Styling*/
+
+.Orders {
+  border-top: 1px solid;
+  height: 47vh;
+  overflow-y: scroll;
+  padding: 0;
+  text-align: center;
+}
+
+.Orders .jumbotron{
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  font-size: 2em;
+  padding: 10px 0px 10px 0px;
+  margin: 0px;
+}
+
+.OrderItem {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Menu Styling */
 
 .Food-item {
   padding: 5px;
@@ -71,18 +141,42 @@ body {
   width: 100%;
   text-align: center;
   font-size: 1.3em;
-  /* text-transform: uppercase; */
   background-color: #000;
   color: #fff;
   opacity: 0.7;
   margin: 0;
 }
 
-.MainPanel .jumbotron {
-  background-color: rgba(0, 0, 0, 0.3);
-  font-size: 2em;
-  margin: 0;
+/* Item Details Styling */
+
+.ItemDetails {
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid;
+  width: 100%;
+  align-items: center;
+  margin: 0px;
+  margin-bottom: 15px;
+  padding:20px;
+  border-radius: 10px;
 }
+
+/* Reviews Styling */
+
+.Reviews {
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid;
+  width: 100%;
+  align-items: center;
+  margin: 0;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.ReviewsHeader {
+  font-size: 1.5em;
+}
+
+/* Loading Styling */
 
 .Spinner {
   position: absolute;
@@ -95,46 +189,29 @@ body {
   background-size: 100%;
 }
 
-.Robots .jumbotron{
-  background-color: rgba(0, 0, 0, 0.3);
-  margin: 0;
-  padding: 5px 10px;
-  text-align: center;
-  font-size: 1.3em;
-}
 
-.Orders .jumbotron{
-  background-color: rgba(0, 0, 0, 0.3);
-  margin: 0;
-  padding: 5px 10px;
-  text-align: center;
-  font-size: 1.3em;
-}
+
+
+
 
 .card{
   background-color: rgba(0, 0, 0, 0.3);
   border: 1px solid;
 }
 
-a {
-  color: #000;
-}
+
+
 
 .nav-tabs{
   background-color: rgba(255, 255, 255, 0.5);
-}
-
-.OrderItems {
-  background-color: unset;
 }
 
 .Modal{
   color: #000;
 }
 
-.active {
-  font-weight: 700;
-}
-.Review{
-  color: black;
+
+
+.breadcrumb {
+  background-color: rgba(0, 0, 0, 0.6);
 }

@@ -65,15 +65,13 @@ class Menu extends Component {
                     </Modal.Body>
                 </Modal>
 
-                <Jumbotron>
-                    <Container>
-                        <Row>
-                            <Col>
-                                Menu
+                <Jumbotron className="Jumbotron-MainPanel">
+                    <Row>
+                        <Col>
+                            Menu
                             </Col>
-                            <Button className="btn-lg" onClick={this.toggleModal}>Add New Item</Button>
-                        </Row>
-                    </Container>
+                        <Button className="btn-lg" onClick={this.toggleModal}>Add New Item</Button>
+                    </Row>
                 </Jumbotron>
 
                 {this.props.items.isLoading ? <Loading /> :

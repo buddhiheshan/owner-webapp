@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Jumbotron, Breadcrumb, Button, Container, Row, Col, Modal } from 'react-bootstrap';
+import { Jumbotron, Breadcrumb, Button, Container, Row, Col, Modal, Image, ListGroup } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { getItemDetail, deleteItem } from '../redux/actions/itemActions';
@@ -20,75 +20,81 @@ function RenderItemDetails({ item }) {
     }
 
     return (
-        <div className="col-12 col-md-6 Details">
+        <ListGroup>
             {
                 Object.keys(RequiredDetails).map((key, i) => {
                     return (
-                        <div className="row" key={i}>
-                            <div className="col-3">
-                                {key}
-                            </div>
-                            <div className="col-9">
-                                {RequiredDetails[key]}
-                            </div>
-                        </div>
+                        <ListGroup.Item key={i}>
+                            <Row>
+                                <Col md={4}>
+                                    {key}
+                                </Col>
+                                <Col>
+                                    {RequiredDetails[key]}
+                                </Col>
+                            </Row>
+                        </ListGroup.Item>
                     )
                 })
             }
             <RenderIngredients ingredients={item.ingredients} />
             <RenderPortions portions={item.portions} />
-        </div>
+        </ListGroup>
     )
 }
 
 function RenderIngredients({ ingredients }) {
     return (
-        <div className="row">
-            <div className="col-3">
-                Ingredients
-                </div>
-            <div className="col-9">
-                <ul>
-                    {
-                        ingredients.map((ingredient, i) => {
-                            return (
-                                <li key={i}>{ingredient}</li>
-                            )
-                        })
-                    }
-                </ul>
-            </div>
-        </div>
+        <ListGroup.Item>
+            <Row>
+                <Col md={4}>
+                    Ingredients
+                </Col>
+                <Col>
+                    <ul>
+                        {
+                            ingredients.map((ingredient, i) => {
+                                return (
+                                    <li key={i}>{ingredient}</li>
+                                )
+                            })
+                        }
+                    </ul>
+                </Col>
+            </Row>
+        </ListGroup.Item>
     )
 }
 
 function RenderPortions({ portions }) {
     return (
-        <div className="row">
-            <div className="col-3">
-                Portions
-                </div>
-            <div className="col-9">
-                <ul>
-                    {
-                        portions.map((portion, i) => {
-                            return (
-                                <li key={i}>
-                                    <div className="row">
-                                        <div className="col-3">
-                                            {portion.name}
-                                        </div>
-                                        <div className="col-9">
-                                            {portion.price}
-                                        </div>
-                                    </div>
-                                </li>
-                            )
-                        })
-                    }
-                </ul>
-            </div>
-        </div>
+        <ListGroup.Item>
+            <Row>
+                <Col md={4}>
+                    Portions
+                </Col>
+                <Col>
+                    <ul>
+                        {
+                            portions.map((portion, i) => {
+                                return (
+                                    <li key={i}>
+                                        <Row>
+                                            <Col md={6}>
+                                                {portion.name}
+                                            </Col>
+                                            <Col md={6}>
+                                                {portion.price}
+                                            </Col>
+                                        </Row>
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>
+                </Col>
+            </Row>
+        </ListGroup.Item>
     )
 }
 
@@ -150,15 +156,15 @@ class ItemDetail extends Component {
         }
         // else
         return (
-            
+
             <React.Fragment>
-                
+
                 <Modal show={this.state.isEditImageModalOpen} onHide={this.toggleEditImageModal} className="Modal">
                     <Modal.Header closeButton>
                         <Modal.Title>Edit Item Image</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <EditImageForm imgURL={this.props.items.selectedItem.imgUrl} toggleModal={this.toggleEditImageModal}/>
+                        <EditImageForm imgURL={this.props.items.selectedItem.imgUrl} toggleModal={this.toggleEditImageModal} />
                     </Modal.Body>
                 </Modal>
 
@@ -167,7 +173,7 @@ class ItemDetail extends Component {
                         <Modal.Title>Edit Item Details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <EditItemForm toggleModal={this.toggleEditItemModal}/>
+                        <EditItemForm toggleModal={this.toggleEditItemModal} />
                     </Modal.Body>
                 </Modal>
 
@@ -176,43 +182,39 @@ class ItemDetail extends Component {
                         <Modal.Title>Delete Item</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <DeleteForm delete={this.deleteItem} toggleModal={this.toggleDeleteItemModal}/>
+                        <DeleteForm delete={this.deleteItem} toggleModal={this.toggleDeleteItemModal} />
                     </Modal.Body>
                 </Modal>
 
-                <Jumbotron>
-                    <Container>
-                        <Row>
-                            <Col>
-                                {this.props.items.selectedItem.name}
-                            </Col>
-                                <Button onClick={this.toggleEditImageModal} className="mr-3">Edit Item Image</Button>
-                                <Button onClick={this.toggleEditItemModal} className="mr-3">Edit Item</Button>
-                                <Button onClick={this.toggleDeleteItemModal} className="mr-3">Delete Item</Button>
-                        </Row>
-                    </Container>
+                <Jumbotron fluid className="Jumbotron-MainPanel">
+                    <Row>
+                        <Col>
+                            {this.props.items.selectedItem.name}
+                        </Col>
+                        <Button size="lg" onClick={this.toggleEditImageModal} className="mr-3">Edit Item Image</Button>
+                        <Button size="lg" onClick={this.toggleEditItemModal} className="mr-3">Edit Item</Button>
+                        <Button size="lg" onClick={this.toggleDeleteItemModal} className="mr-3">Delete Item</Button>
+                    </Row>
                 </Jumbotron>
 
-                <Container>
+                <Container fluid>
                     <Row>
                         <Breadcrumb className='m-3'>
                             <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/menu" }}>Menu</Breadcrumb.Item>
                             <Breadcrumb.Item active>{this.props.items.selectedItem.name}</Breadcrumb.Item>
                         </Breadcrumb>
                     </Row>
-                    <Row>
-                        <div className='col-12 col-md-4'>
-                            <img src={this.props.items.selectedItem.imgUrl} width="100%" alt="food item" />
-                        </div>
-                        <RenderItemDetails item={this.props.items.selectedItem} />
+                    <Row className="ItemDetails">
+                        <Col md={6}>
+                            <Image rounded src={this.props.items.selectedItem.imgUrl} width="100%" alt="food item" />
+                        </Col>
+                        <Col>
+                            <RenderItemDetails item={this.props.items.selectedItem} />
+                        </Col>
                     </Row>
-                    <Row>
-                        <Reviews />
-                    </Row>
-
-                    {/* <RenderReviews reviews={this.props.items.selectedItem} /> */}
+                    <Reviews />
                 </Container>
-                
+
             </React.Fragment>
         )
     }

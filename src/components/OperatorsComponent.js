@@ -6,14 +6,12 @@ class Operators extends Component {
         return (
             <React.Fragment>
 
-                <Jumbotron>
-                    <Container>
-                        <Row>
-                            <Col>
-                                Operators
+                <Jumbotron className="Jumbotron-MainPanel">
+                    <Row>
+                        <Col>
+                            Operators
                             </Col>
-                        </Row>
-                    </Container>
+                    </Row>
                 </Jumbotron>
 
             </React.Fragment>

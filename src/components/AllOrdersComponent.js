@@ -1,38 +1,51 @@
-import React, { Component } from 'react';
-import { Container, Jumbotron, Row, Col,Tabs, Tab } from 'react-bootstrap'
+import React, { Component } from 'react'
+import { connect } from 'react-redux';
 
-class AllOrders extends Component {
+import { Jumbotron, Container } from 'react-bootstrap';
+
+import Loading from '../components/LoadingComponent';
+import OrdersTab from './AllOrdersTabComponent';
+
+import { getOrders } from '../redux/actions/ordersAction';
+import { getItems } from '../redux/actions/itemActions';
+
+class Orders extends Component {
+
+    componentDidMount() {
+        console.log(this.props.property.id);
+        this.props.dispatchGetItems(this.props.property.id)
+        this.props.dispatchGetOrders(this.props.property.id, "Pending", "SET_PENDING_ORDERS")
+        this.props.dispatchGetOrders(this.props.property.id, "Preparing", "SET_PREPARING_ORDERS")
+        this.props.dispatchGetOrders(this.props.property.id, "Delivering", "SET_DELIVERING_ORDERS")
+        this.props.dispatchGetOrders(this.props.property.id, "Delivered", "SET_DELIVERED_ORDERS")
+        this.props.dispatchGetOrders(this.props.property.id, "Cancelled", "SET_CANCELLED_ORDERS")
+    }
+
     render() {
         return (
             <React.Fragment>
-
-                <Jumbotron>
+                <Jumbotron fluid className="Jumbotron-MainPanel">Orders</Jumbotron>
+                {this.props.orders.isLoading ? <Loading /> :
                     <Container>
-                        <Row>
-                            <Col>
-                                Orders
-                            </Col>
-                        </Row>
-                    </Container>
-                </Jumbotron>
-
-
-                <Container>
-                    <Tabs defaultActiveKey="Pending" id="uncontrolled-tab-example">
-                        <Tab eventKey="Pending" title="Pending">
-                            {/* <RenderOrders orders={this.props.orders.orders.pending.orders} nextState="Accept" props={this.props} /> */}
-                        </Tab>
-                        <Tab eventKey="Preparing" title="Preparing">
-                            {/* <RenderOrders orders={this.props.orders.orders.preparing.orders} nextState="Deploy Robot" props={this.props} /> */}
-                        </Tab>
-                        <Tab eventKey="Delivering" title="Delivering">
-                            {/* <RenderOrders orders={this.props.orders.orders.delivering.orders} props={this.props} /> */}
-                        </Tab>
-                    </Tabs>
-                </Container>
+                        {/* <Row> */}
+                            <OrdersTab />
+                        {/* </Row> */}
+                    </Container>}
             </React.Fragment>
         )
     }
 }
 
-export default AllOrders;
+const mapStateToProps = state => {
+    return {
+        property: state.property,
+        orders: state.orders
+    }
+}
+
+const mapDispatchToProps = dispatch => ({
+    dispatchGetOrders: (propertyID, status, actionType) => dispatch(getOrders(propertyID, status, actionType)),
+    dispatchGetItems: (propertyID) => dispatch(getItems(propertyID))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Orders);

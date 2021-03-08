@@ -199,6 +199,12 @@ class OrdersTab extends Component {
                 <Tab eventKey="Delivering" title="Delivering">
                     <RenderOrders orders={this.props.orders.orders.delivering.orders} items={this.props.items.items} />
                 </Tab>
+                <Tab eventKey="Delivered" title="Delivered">
+                    <RenderOrders orders={this.props.orders.orders.delivered.orders} items={this.props.items.items} />
+                </Tab>
+                <Tab eventKey="Cancelled" title="Cancelled">
+                    <RenderOrders orders={this.props.orders.orders.cancelled.orders} items={this.props.items.items} />
+                </Tab>
             </Tabs>
         )
 

@@ -22,7 +22,7 @@ class NavBar extends Component {
     render() {
         return (
             <Navbar bg="light" expand="sm" className="NavBar">
-                <Navbar.Brand><NavLink className="Navlink nav-link" to='/menu'> Welcome!</NavLink></Navbar.Brand>
+                <Navbar.Brand><NavLink className="Navlink nav-link NavbarBrand" to='/menu'> Welcome!</NavLink></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
