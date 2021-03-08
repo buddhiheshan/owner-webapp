@@ -94,7 +94,11 @@ class AddItemForm extends Component {
                         <Form.Label column >Item Category</Form.Label>
                     </Col>
                     <Col sm="8">
-                        <Form.Control type="text" placeholder="Enter Item Category" name="category" value={this.state.category} onChange={this.handleChange} />
+                    <Form.Control as="select" defaultValue="Choose...">
+        <option>Choose...</option>
+        <option>...</option>
+      </Form.Control>
+                        {/* <Form.Control type="text" placeholder="Enter Item Category" name="category" value={this.state.category} onChange={this.handleChange} /> */}
                     </Col>
                 </Form.Group>
 

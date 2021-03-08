@@ -10,11 +10,11 @@ import { getReviews } from '../redux/actions/reviewsActions';
 
 
 
-const RenderStars = ({count}) => {
+const RenderStars = ({ count }) => {
     const stars = [];
-    
-    for(let i = 0; i < count; i++){
-        stars.push(<MdStar color="red" />)
+
+    for (let i = 0; i < count; i++) {
+        stars.push(<MdStar key={i} color="red" />)
     }
     return (
         <div>
@@ -34,8 +34,8 @@ class Reviews extends Component {
     render() {
 
         const reviews = this.props.reviews.reviews.map((review) => (
-            <ListGroup.Item className="Review">
-                {review.comment}<br/>
+            <ListGroup.Item key={review._id} className="Review">
+                {review.comment}<br />
                 <RenderStars count={review.stars} />
             </ListGroup.Item>
         ))
@@ -48,10 +48,12 @@ class Reviews extends Component {
                     </Row>
                     <Row >
                         <Col>
-                            {this.props.reviews.isLoading ? <Loading /> :
-                                <ListGroup>
-                                    {reviews}
-                                </ListGroup>}
+                            {
+                                this.props.reviews.isLoading ? <Loading /> :
+                                    <ListGroup>
+                                        {reviews}
+                                    </ListGroup>
+                            }
                         </Col>
                     </Row>
                 </Container>

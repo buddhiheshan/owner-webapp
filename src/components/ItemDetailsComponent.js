@@ -92,41 +92,6 @@ function RenderPortions({ portions }) {
     )
 }
 
-function RenderReviews({ reviews }) {
-
-    // if(reviews.isLoading){
-    //     return (
-    //         <div className="container">
-    //             <div className="row">
-    //                 <Loading />
-    //             </div>
-    //         </div>
-    //     );
-    // }
-    // else{
-    return (
-        <div className="row">
-            {/* <h3 className="col-12">Reviews</h3>
-                <ul>
-                    {
-                        reviews.reviews.map((review, i) => {
-                            return (
-                                <li key={i}>
-                                    <p>{review.comment}</p>
-                                    <p>Starts: {review.stars}</p>
-                                </li>
-                            )
-                        })
-                    }
-                </ul> */}
-        </div>
-    )
-    // }
-}
-
-
-
-
 class ItemDetail extends Component {
 
     constructor(props) {
