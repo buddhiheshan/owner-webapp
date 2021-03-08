@@ -10,6 +10,10 @@ body {
   margin:0;
 }
 
+.form-group{
+  margin-bottom: 1rem;
+}
+
 .active {
   font-weight: bold;
 }
@@ -176,6 +180,21 @@ a {
   font-size: 1.5em;
 }
 
+/* Table Styling */
+
+.Table-card {
+  margin: 5px;
+}
+
+.Table-cardheader {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.Table-carddetail {
+  padding-top: 0px;
+}
 /* Loading Styling */
 
 .Spinner {

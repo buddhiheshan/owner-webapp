@@ -21,4 +21,7 @@ export const PUSH_ORDER = 'PUSH_ORDER';
 export const SET_REVIEWS = 'SET_REVIEWS';
 export const RESET_REVIEWS = 'RESET_REVIEWS';
 
-export const GET_TABLES = 'GET_TABLES';
+export const SET_TABLES = 'SET_TABLES';
+export const ADD_TABLE = 'ADD_TABLE';
+export const DELETE_TABLE = 'DELETE_TABLE';
+export const EDIT_TABLE = 'EDIT_TABLE';

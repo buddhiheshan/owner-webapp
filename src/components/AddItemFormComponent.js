@@ -36,6 +36,7 @@ class AddItemForm extends Component {
     }
 
     handleAddItem(event) {
+        console.log(this.state);
         this.props.toggleModal();
         this.props.dispatchPostItems(this.props.propertyID, this.state);
         event.preventDefault();
@@ -94,10 +95,10 @@ class AddItemForm extends Component {
                         <Form.Label column >Item Category</Form.Label>
                     </Col>
                     <Col sm="8">
-                    <Form.Control as="select" defaultValue="Choose...">
-        <option>Choose...</option>
-        <option>...</option>
-      </Form.Control>
+                        <Form.Control as="select" defaultValue="Choose...">
+                            <option>Choose...</option>
+                            <option>...</option>
+                        </Form.Control>
                         {/* <Form.Control type="text" placeholder="Enter Item Category" name="category" value={this.state.category} onChange={this.handleChange} /> */}
                     </Col>
                 </Form.Group>
@@ -141,7 +142,7 @@ class AddItemForm extends Component {
                                     <div className="col-4">
                                         {portion.price}
                                     </div>
-                                    <Button type="button" value ={portion.name} onClick={this.removePortion} className="btn btn-primary col-2 ml-2"><strong>-</strong></Button>
+                                    <Button type="button" value={portion.name} onClick={this.removePortion} className="btn btn-primary col-2 ml-2"><strong>-</strong></Button>
                                 </Form.Group>
                             ))
                         }

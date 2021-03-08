@@ -182,7 +182,7 @@ class ItemDetail extends Component {
                         <Modal.Title>Delete Item</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <DeleteForm delete={this.deleteItem} toggleModal={this.toggleDeleteItemModal} />
+                        <DeleteForm delete={this.deleteItem} toggleModal={this.toggleDeleteItemModal} source="itemDelete"/>
                     </Modal.Body>
                 </Modal>
 

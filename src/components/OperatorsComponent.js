@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Jumbotron, Row, Col } from 'react-bootstrap'
+import { Jumbotron, Row, Col } from 'react-bootstrap'
 
 class Operators extends Component {
     render() {
