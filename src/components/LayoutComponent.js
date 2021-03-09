@@ -16,11 +16,44 @@ import Operators from "./OperatorsComponent";
 import AllOrders from './AllOrdersComponent';
 
 import { getPropertyInfo } from '../redux/actions/propertyActions';
+import { pushOrder } from '../redux/actions/ordersAction';
+
+const io = require("socket.io-client");
+const connectionUrl = "ws://waiterbot-api.herokuapp.com";
 
 class Layout extends Component {
 
     componentDidMount(){
         this.props.dispatchGetPropertyInfo();
+
+        const socket = io(connectionUrl, {
+            // autoConnect : false,
+            transports: ["polling"],
+            query: {
+                token: localStorage.getItem('token')
+            },
+        });
+
+        socket.on("connect", msg => {
+            console.log("successfully connected to ws!");
+        });
+
+        socket.on('join', function (data) { console.log(data); });
+        socket.on('error', function (data) { console.log(data); });
+
+        socket.on("private", (data) => {
+            console.log("[PRIVATE]  :", data);
+        });
+
+        socket.on("newOrder", (data) => {
+            this.props.dispatchPushOrder(data);
+            // toastr.info("New Order Recieved");
+            console.log("[NEW ORDER ]  :", data);
+        });
+
+        socket.on("orderStateChange", (data) => {
+            console.log("[ORDER STATE CHANGE ]  :", data);
+        });
     }
 
     render() {
@@ -64,6 +97,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     dispatchGetPropertyInfo: () => dispatch(getPropertyInfo()),
+    dispatchPushOrder: (data) => dispatch(pushOrder(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Layout);
